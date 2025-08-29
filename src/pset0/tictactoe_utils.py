@@ -51,4 +51,5 @@ class RandomAgent:
         available_moves = [
             move for move in itertools.product(range(3), range(3)) if game.board[move[0]][move[1]] == Tile.EMPTY
         ]
+
         return random.choice(available_moves)

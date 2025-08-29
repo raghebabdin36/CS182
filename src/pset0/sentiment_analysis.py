@@ -38,12 +38,15 @@ class SentimentAnalyzer:
 
     def analyze_sentiment(self, sentence: str) -> int:
         """
-        Provide a sentiment score for the given sentence based on the initialized word lists.
+        Provide a sentiment score for the given sentence based on the initialized word lists. A word is a modifier if its either a negation or an intensifier.
             - Words in the positive_words list contribute +1 to the score.
             - Words in the negative_words list contribute -1 to the score.
             - Words not in either list contribute 0 to the score.
-            - Negation words invert the sentiment of the following word.
-            - Intensifier words amplify the sentiment of the following word by doubling its contribution.
+            - Negation words invert the sentiment of the next non-modifier word.
+            - Intensifier words amplify the sentiment of the next non-modifier word by doubling its contribution.
+            - Multiple consecutive modifiers apply in sequence to the next non-modifier word.
+            - Words are case-insensitive.
+            - Punctuation should be ignored and deliminates words
 
         Parameters:
             sentence (str): The sentence to analyze.
@@ -53,6 +56,7 @@ class SentimentAnalyzer:
                  negative values indicate negative sentiment, and zero indicates neutral sentiment.
         """
         punctuation = r"!#$%&'()*+,./:;<=>?@[]^_`{|}\~)"
+
         raise NotImplementedError
 
     def get_sentiment_summary(self, text: str) -> SentimentSummary:
