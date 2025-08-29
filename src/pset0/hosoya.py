@@ -11,7 +11,7 @@ def print_hosoya_triangle(triangle_rows: list[list[int]]):
         print(f"[{row_idx}]{' ' * ((largest_length - current_row_length) // 2)}{row}")
 
 
-def hosoya_triangle(n: int) -> list[int]:
+def hosoya_triangle(n: int) -> list[list[int]]:
     """
     Generates the first `n + 1` rows of Hosoya's Triangle.
     Each number is the sum of the two numbers above in either the left or right diagonal.
