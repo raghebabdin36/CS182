@@ -37,8 +37,24 @@ class SentimentAnalyzer:
         raise NotImplementedError
 
     def analyze_sentiment(self, sentence: str) -> int:
+        """
+        Provide a sentiment score for the given sentence based on the initialized word lists.
+            - Words in the positive_words list contribute +1 to the score.
+            - Words in the negative_words list contribute -1 to the score.
+            - Words not in either list contribute 0 to the score.
+            - Negation words invert the sentiment of the following word.
+            - Intensifier words amplify the sentiment of the following word by doubling its contribution.
+
+        Parameters:
+            sentence (str): The sentence to analyze.
+
+        Returns:
+            int: A sentiment score where positive values indicate positive sentiment,
+                 negative values indicate negative sentiment, and zero indicates neutral sentiment.
+        """
         punctuation = r"!#$%&'()*+,./:;<=>?@[]^_`{|}\~)"
         raise NotImplementedError
 
     def get_sentiment_summary(self, text: str) -> SentimentSummary:
+
         raise NotImplementedError

@@ -21,5 +21,5 @@ def sum_nested_lists(input_list: list[SupportsAdd]) -> int:
         sum_nested_lists([1, 2, [3, 4], [[5], 6, 7]]) -> 28
         sum_nested_lists([[1, 2], [[3]], 5, 6]) -> 17
     """
-    #### YOUR CODE HERE ####
+
     raise NotImplementedError

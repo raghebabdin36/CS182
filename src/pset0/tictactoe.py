@@ -6,6 +6,7 @@ class TicTacToe:
         """
         Initializes an empty 3x3 Tic-Tac-Toe board and sets the current player to 'X'.
         """
+
         raise NotImplementedError
 
     @property
@@ -13,6 +14,7 @@ class TicTacToe:
         """
         Returns the current state of the board as a 3x3 list of lists.
         """
+
         raise NotImplementedError
 
     @property
@@ -23,6 +25,7 @@ class TicTacToe:
         Returns:
             Player: The current player, which can be either Player.X or Player.O.
         """
+
         raise NotImplementedError
 
     def make_move(self, row: int, col: int) -> MoveStatus:
@@ -42,6 +45,7 @@ class TicTacToe:
                 - MoveStatus.CELL_TAKEN: The specified cell is already taken.
                 - MoveStatus.GAME_OVER: The game is already over (either a player has won or the board is full).
         """
+
         raise NotImplementedError
 
     def game_status(self) -> GameStatus:
@@ -55,6 +59,7 @@ class TicTacToe:
                 - GameStatus.DRAW: The game is a draw (the board is full and there is no winner).
                 - GameStatus.IN_PROGRESS: The game is still in progress (there are empty cells and no winner yet).
         """
+
         raise NotImplementedError
 
 

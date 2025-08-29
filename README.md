@@ -85,3 +85,9 @@ To run the provided tests (or ones you created use):
 ```
 pytest
 ```
+
+## Submitting
+
+We will be using Gradescope to automatically grade the programming assignments for the course. To submit to Gradescope push your code to GitHub, select the appropriate Gradescope Assignment and then select your GitHub repository.
+
+![alt text](docs/github.png)

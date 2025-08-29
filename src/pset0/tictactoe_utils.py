@@ -7,7 +7,7 @@ from enum import StrEnum
 from typing import Protocol, runtime_checkable, TYPE_CHECKING
 
 if TYPE_CHECKING:
-    from src.tictactoe import TicTacToe
+    from pset0.tictactoe import TicTacToe
 
 
 @runtime_checkable
