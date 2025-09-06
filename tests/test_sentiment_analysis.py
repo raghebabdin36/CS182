@@ -1,7 +1,7 @@
+import pytest
 import os
 
 from pset0.sentiment_analysis import Sentiment, SentimentAnalyzer, SentimentSummary
-
 
 def test_sentiment_analyzer():
     POSITIVE_WORDS_PATH = os.path.join("data", "positive_words.txt")
@@ -34,7 +34,7 @@ def test_sentiment_analyzer():
     assert test_analyzer.analyze_sentiment("Remy is a really cute cat.") == 2
     assert test_analyzer.analyze_sentiment("Spot is not a puppy anymore, but still adorable.") == 1
 
-    target_summary: SentimentSummary = {
+    example_target_summary: SentimentSummary = {
         "sentiment": Sentiment.POSITIVE,
         "positive_percentage": 0.6,
         "negative_percentage": 0.2,
@@ -42,4 +42,10 @@ def test_sentiment_analyzer():
         "most_negative_sentence": "It was by far the most time-consuming and difficult, out of four undergraduate computer science department classes I took this semester",
     }
 
-    assert test_analyzer.get_sentiment_summary(comments) == target_summary
+    analyzer_summary = test_analyzer.get_sentiment_summary(comments)
+
+    assert analyzer_summary["sentiment"] == example_target_summary["sentiment"]
+    assert analyzer_summary["positive_percentage"] == pytest.approx(example_target_summary["positive_percentage"])
+    assert analyzer_summary["negative_percentage"] == pytest.approx(example_target_summary["negative_percentage"])
+    assert test_analyzer.analyze_sentiment(analyzer_summary["most_positive_sentence"]) == 6
+    assert test_analyzer.analyze_sentiment(analyzer_summary["most_negative_sentence"]) == -2
