@@ -1,25 +1,18 @@
-from __future__ import annotations
-from typing import Protocol, runtime_checkable, Self
+type NestedIntList = list[int | NestedIntList]
 
 
-@runtime_checkable
-class SupportsAdd(Protocol):
-    def __add__(self, other, /) -> Self: ...
-
-
-def sum_nested_lists(input_list: list[SupportsAdd]) -> int:
+def sum_nested_lists(input_list: NestedIntList) -> int:
     """
-    Recursively sums items within a nested structure of lists.
+    Recursively sums integers within a nested structure of lists.
 
     Parameters:
-        input_list (list[SupportsAdd]): A nested list structure containing integers and/or other lists.
+        `input_list`: A list containing integers and other nested lists.
 
     Returns:
-        int: The sum of all integers within the nested lists.
+        The sum of all integers within the nested integer list.
 
     Example:
         sum_nested_lists([1, 2, [3, 4], [[5], 6, 7]]) -> 28
         sum_nested_lists([[1, 2], [[3]], 5, 6]) -> 17
     """
-
     raise NotImplementedError

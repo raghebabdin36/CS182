@@ -1,7 +1,7 @@
-from pset0.hosoya import hosoya_triangle
+from pset0.hosoya_triangle import hosoya_triangle
 
 
-def test_hosoya():
+def test_hosoya_triangle():
     assert hosoya_triangle(0) == [[1]]  # Remember, you must return a list of lists!
     assert hosoya_triangle(3) == [[1], [1, 1], [2, 1, 2], [3, 2, 2, 3]]
     assert hosoya_triangle(10) == [

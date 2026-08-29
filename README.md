@@ -1,93 +1,41 @@
-# Problem Set 0
+<!--
+========================================================================================================================
 
-## Installation
+    This is a Markdown file. If you're using VS Code, right-click the filename and select "Open Preview" to render it!
 
-It's **highly** recommended to use `uv` for this course, especially if you are not familiar with managing multiple python installations or are uncertain about which version of Python is currently installed on your system.
+========================================================================================================================
+-->
 
-### `uv`
+# CS 1820 Problem Set 0
 
-#### Installing `uv`
+| [`README`] | [`Installation`](docs/1-installation.md#installation) | [`Getting Started`](docs/2-getting-started.md#getting-started) | [`Tasks`](docs/3-tasks.md#tasks) |
+| :---: | :---: | :---: | :---: |
 
-A headache-free way to start running the starter code is via the [`uv`](https://docs.astral.sh/uv/getting-started/installation/) package manager. To install (on Mac, Linux, WSL):
+<br>
 
-```
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
+Welcome to CS 1820! In this assignment, you'll be solving a series of short programming exercises in Python. Most of this should feel like review — this assignment is meant to help you gauge your comfort level, as each homework this semester will include a major programming component. To get started, we have split this `README` into a series of Markdown files, which you can navigate through at the top.
 
-> [!NOTE]
-> The above command requires `curl` installed! You'll most likely have this installed, already but if not it should be a small `brew/apt/pacman install` away. Alternatively, if you have `wget` already installed you can use
->
-> ```
-> wget -qO- https://astral.sh/uv/install.sh | sh
-> ```
+<br>
 
-Alternative approaches exist to install `uv` which you are invited to explore in the [Astral documentation](https://docs.astral.sh/uv/getting-started/installation/).
+## Code Structure
 
-#### Installing Project Dependencies
+This repository contains a couple major directories of interest.
 
-One of the major superpowers of `uv` is its ability to manage different versions of Python using a combination of virtual environments and configuration files. Initialize this project's virtual environment using
+### `data/`
 
-```
-uv venv
-```
+This directory contains text files that will be used by some of our local tests. You can read more about our testing framework `pytest` in the next few articles in this README.
 
-and then install all the required dependencies using
+### `src/`
 
-```
-uv sync
-```
+All code that you will be responsible for belongs here. In general, refrain from making *destructive* edits to the stencil code to ensure compatibility with the autograder. Adding new files, functions, and methods is encouraged! External third-party dependencies are not allowed, but feel free to import any built-in Python module.
 
-This should install an appropriate Python version and all the project's dependencies including `pytest`.
+### `tests/`
 
-#### Running the code
+We've provided some simple tests for you to debug your implementations before submitting to Gradescope. You can run these local tests by executing `uv run pytest`. We recommend that you write your own tests as well!
 
-To run the provided tests (or ones you created):
+<br>
 
-```
-uv run pytest
-```
+---
 
-> [!NOTE]
-> No sourcing required! If you prefer the virtual environment folder to not be called `.venv` then you can pass a name to the `uv venv` command. However, this would require setting the `UV_PROJECT_ENVIRONMENT` variable to this name either prior to every `uv sync` and `uv run` command, exporting the variable in every terminal session, or using some external dependency to manage your environment variables like [`direnv`](https://direnv.net/).
-
-### "Manual" Virtual Environment Management
-
-#### Setting up your environment & Installing Dependencies
-
-If you prefer not having to install another package manager, then you can choose to use a currently installed Python interpreter and configure your virtual environment manually. It's recommended to use a Python interpreter with version 3.11+, although it should be possible to run the stencil with a 3.10 interpreter. This may require making edits to the type hints provided in the stencil.
-
-To setup your virtual environment we provide a setup script at `scripts/setup.sh`.
-
-```bash
-chmod +x scripts/setup.sh
-./scripts/setup.sh
-```
-
-#### Running the code
-
-Be sure to source your virtual environment!
-
-```bash
-source .venv/bin/activate
-```
-
-> [!TIP]
-> You should see `(.venv)` next to your terminal prompt when your environment is successfully sourced. Alternatively, you can verify if the environment is sourced by running `which python3`. This path should point to the location of your virtual environment.
-
-To run the starter code use:
-
-```
-python3 -m segmentation [--help] [--world WORLD] [--agent-one AGENT_ID] [--agent-two AGENT_ID] [--headless] [--render-delay]
-```
-
-To run the provided tests (or ones you created use):
-
-```
-pytest
-```
-
-## Submitting
-
-We will be using Gradescope to automatically grade the programming assignments for the course. To submit to Gradescope push your code to GitHub, select the appropriate Gradescope Assignment and then select your GitHub repository.
-
-![alt text](docs/github.png)
+| [`Back to top`](#cs-1820-problem-set-0) | [`Installation` →](docs/1-installation.md#installation) |
+| :---: | ---: |

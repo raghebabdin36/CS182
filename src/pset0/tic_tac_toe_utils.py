@@ -1,13 +1,12 @@
 from __future__ import annotations
 
-import random
 import itertools
-
+import random
 from enum import StrEnum
-from typing import Protocol, runtime_checkable, TYPE_CHECKING
+from typing import TYPE_CHECKING, Protocol, runtime_checkable
 
 if TYPE_CHECKING:
-    from pset0.tictactoe import TicTacToe
+    from pset0.tic_tac_toe import TicTacToe
 
 
 @runtime_checkable
@@ -30,7 +29,7 @@ class Tile(StrEnum):
 
 
 class MoveStatus(StrEnum):
-    SUCCESSFUL = "Move successful"
+    SUCCESS = "Move successful"
     OUT_OF_BOUNDS = "Invalid move: Out of bounds"
     CELL_TAKEN = "Invalid move: Cell already taken"
     GAME_OVER = "Invalid move: Game is already over"
@@ -38,8 +37,8 @@ class MoveStatus(StrEnum):
 
 class GameStatus(StrEnum):
     IN_PROGRESS = "In Progress"
-    X = "X wins"
-    O = "O wins"
+    X_WINS = "X wins"
+    O_WINS = "O wins"
     DRAW = "Draw"
 
 
