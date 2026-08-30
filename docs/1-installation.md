@@ -13,7 +13,7 @@
 
 <br>
 
-For this class, you will be using GitHub, Git, Visual Studio Code, and `uv` in order to fetch and work on programming assignments. We assume that most students will be using VS Code, but other IDEs should be fine. Feel free to skip any steps that you have done before, or post on [Ed](TODO) if you get stuck.
+For this class, you will be using GitHub, Git, Visual Studio Code, and `uv` in order to fetch and work on programming assignments. We assume that most students will be using VS Code, but other IDEs should be fine. Feel free to skip any steps that you have done before, or post on Ed if you get stuck.
 
 <br>
 
