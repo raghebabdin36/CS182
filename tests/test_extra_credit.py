@@ -1,7 +1,13 @@
 import random
 
-from pset0.tic_tac_toe import TicTacToe, StudentAgent
-from pset0.tic_tac_toe_utils import AgentProtocol, Player, MoveStatus, GameStatus, RandomAgent
+from pset0.tic_tac_toe import StudentAgent, TicTacToe
+from pset0.tic_tac_toe_utils import (
+    AgentProtocol,
+    GameStatus,
+    MoveStatus,
+    Player,
+    RandomAgent,
+)
 
 
 def game_loop(agent_x: AgentProtocol, agent_o: AgentProtocol) -> GameStatus:

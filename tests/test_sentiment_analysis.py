@@ -1,7 +1,9 @@
 import os
+
 import pytest
 
 from pset0.sentiment_analysis import Sentiment, SentimentAnalyzer, SentimentSummary
+
 
 def test_sentiment_analysis():
     POSITIVE_WORDS_PATH = os.path.join("data", "positive_words.txt")

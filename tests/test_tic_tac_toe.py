@@ -1,5 +1,5 @@
 from pset0.tic_tac_toe import TicTacToe
-from pset0.tic_tac_toe_utils import Tile, Player, MoveStatus, GameStatus
+from pset0.tic_tac_toe_utils import GameStatus, MoveStatus, Player, Tile
 
 
 def test_tic_tac_toe():

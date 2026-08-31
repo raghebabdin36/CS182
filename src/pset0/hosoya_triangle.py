@@ -7,7 +7,7 @@ def print_hosoya_triangle(rows: list[list[int]]):
     """
     largest_length = len(str(rows[-1]))
     for row_idx, row in enumerate(rows):
-        current_row_length = len(str(rows[row_idx]))
+        current_row_length = len(str(row))
         print(f"[{row_idx}]{' ' * ((largest_length - current_row_length) // 2)}{row}")
 
 

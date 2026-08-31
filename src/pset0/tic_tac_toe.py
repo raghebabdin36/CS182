@@ -1,4 +1,4 @@
-from pset0.tic_tac_toe_utils import Tile, Player, MoveStatus, GameStatus
+from pset0.tic_tac_toe_utils import GameStatus, MoveStatus, Player, Tile
 
 
 class TicTacToe:

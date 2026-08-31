@@ -2,7 +2,6 @@ import string
 from enum import StrEnum
 from typing import TypedDict
 
-
 PUNCTUATION = string.punctuation
 SENTENCE_ENDINGS = ".!?"
 
