@@ -26,4 +26,21 @@ def hosoya_triangle(n: int) -> list[list[int]]:
         hosoya_triangle(0) -> [[1]]
         hosoya_triangle(3) -> [[1], [1, 1], [2, 1, 2], [3, 2, 2, 3]]
     """
-    raise NotImplementedError
+    triangle: list[list[int]] = []
+
+    for i in range(n + 1):
+        row: list[int] = []
+        for k in range(i + 1):
+            if i <= 1:
+                row.append(1)
+            elif k < i:
+                above = triangle[i - 1][k]
+                above2 = triangle[i - 2][k] if k <= i - 2 else 0
+                row.append(above + above2)
+            else:
+                above = triangle[i - 1][k - 1]
+                above2 = triangle[i - 2][k - 2] if k - 2 >= 0 else 0
+                row.append(above + above2)
+        triangle.append(row)
+
+    return triangle

@@ -38,7 +38,32 @@ class SentimentAnalyzer:
             `negations`: A list of negations that can invert sentiment.
             `intensifiers`: A list of intensifiers that can amplify sentiment.
         """
-        raise NotImplementedError
+        self.positive_words = {w.lower() for w in positive_words}
+        self.negative_words = {w.lower() for w in negative_words}
+        self.negations = {w.lower() for w in negations}
+        self.intensifiers = {w.lower() for w in intensifiers}
+
+    def _tokenize(self, sentence: str) -> list[str]:
+        words: list[str] = []
+        for raw in sentence.split():
+            start = 0
+            end = len(raw)
+            while start < end and raw[start] in PUNCTUATION:
+                start += 1
+            while end > start and raw[end - 1] in PUNCTUATION:
+                end -= 1
+            if start < end:
+                words.append(raw[start:end])
+        return words
+
+    def _base_sentiment(self, word: str) -> int:
+        is_pos = word in self.positive_words
+        is_neg = word in self.negative_words
+        if is_pos and not is_neg:
+            return 1
+        if is_neg and not is_pos:
+            return -1
+        return 0
 
     def analyze_sentiment(self, sentence: str) -> int:
         """
@@ -59,7 +84,21 @@ class SentimentAnalyzer:
         Returns:
             A sentiment score.
         """
-        raise NotImplementedError
+        score = 0
+        multiplier = 1
+
+        for raw_word in self._tokenize(sentence):
+            word = raw_word.lower()
+
+            if word in self.negations:
+                multiplier *= -1
+            elif word in self.intensifiers:
+                multiplier *= 2
+            else:
+                score += self._base_sentiment(word) * multiplier
+                multiplier = 1
+
+        return score
 
     def get_sentiment_summary(self, text: str) -> SentimentSummary:
         """
@@ -80,4 +119,50 @@ class SentimentAnalyzer:
         Returns:
             A dictionary matching `SentimentSummary`.
         """
-        raise NotImplementedError
+        sentences: list[str] = []
+        current: list[str] = []
+        for ch in text:
+            if ch in SENTENCE_ENDINGS:
+                sentence = "".join(current).strip()
+                if sentence:
+                    sentences.append(sentence)
+                current = []
+            else:
+                current.append(ch)
+        trailing = "".join(current).strip()
+        if trailing:
+            sentences.append(trailing)
+
+        if not sentences:
+            return {
+                "sentiment": Sentiment.NEUTRAL,
+                "positive_percentage": 0.0,
+                "negative_percentage": 0.0,
+                "most_positive_sentence": "",
+                "most_negative_sentence": "",
+            }
+
+        scores = [self.analyze_sentiment(s) for s in sentences]
+        total = sum(scores)
+        n = len(sentences)
+
+        if total > 0:
+            overall = Sentiment.POSITIVE
+        elif total < 0:
+            overall = Sentiment.NEGATIVE
+        else:
+            overall = Sentiment.NEUTRAL
+
+        positive_count = sum(1 for s in scores if s > 0)
+        negative_count = sum(1 for s in scores if s < 0)
+
+        most_positive_idx = max(range(n), key=lambda i: scores[i])
+        most_negative_idx = min(range(n), key=lambda i: scores[i])
+
+        return {
+            "sentiment": overall,
+            "positive_percentage": positive_count / n,
+            "negative_percentage": negative_count / n,
+            "most_positive_sentence": sentences[most_positive_idx],
+            "most_negative_sentence": sentences[most_negative_idx],
+        }

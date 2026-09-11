@@ -15,4 +15,10 @@ def sum_nested_lists(input_list: NestedIntList) -> int:
         sum_nested_lists([1, 2, [3, 4], [[5], 6, 7]]) -> 28
         sum_nested_lists([[1, 2], [[3]], 5, 6]) -> 17
     """
-    raise NotImplementedError
+    total = 0
+    for item in input_list:
+        if isinstance(item, list):
+            total += sum_nested_lists(item)
+        else:
+            total += item
+    return total
